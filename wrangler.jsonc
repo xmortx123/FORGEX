@@ -21,7 +21,7 @@
     {
       "binding": "DB",
       "database_name": "forgex-db",
-      "database_id": "REPLACE_WITH_D1_ID",
+      "database_id": "ef818920-f610-48b9-9690-a74e4afd9e53",
       "migrations_dir": "migrations"
     }
   ],
@@ -37,4 +37,3 @@
     ]
   }
 }
-
