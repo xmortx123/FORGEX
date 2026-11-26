@@ -4,7 +4,6 @@
   "name": "forgex",
   "main": "worker.js",
   "compatibility_date": "2025-09-01",
-
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
@@ -14,12 +13,10 @@
       "/media/*"
     ]
   },
-
   "vars": {
     "OWNER_EMAIL": "king2014mortada@gmail.com",
     "MAX_FILE_MB": "95"
   },
-
   "d1_databases": [
     {
       "binding": "DB",
@@ -28,14 +25,12 @@
       "migrations_dir": "migrations"
     }
   ],
-
   "r2_buckets": [
     {
       "binding": "FILES",
       "bucket_name": "forgex-files"
     }
   ],
-
   "triggers": {
     "crons": [
       "0 3 * * *"
