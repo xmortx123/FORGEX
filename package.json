@@ -1,0 +1,1 @@
+{"name":"forgex","version":"1.0.0","private":true,"type":"module","scripts":{"dev":"wrangler dev","deploy":"wrangler deploy","hash":"node scripts/hash.mjs","setup":"node scripts/setup.mjs","db:local":"wrangler d1 migrations apply forgex-db --local"},"devDependencies":{"wrangler":"^4.167.0"}}

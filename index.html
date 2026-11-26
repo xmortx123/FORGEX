@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#050507">
+<meta name="description" content="FORGEX — ورشة الإضافات والمودات والخرائط لسيرفرات ماينكرافت">
+<title>FORGEX</title>
+<link rel="icon" href="/assets/favicon.png">
+<link rel="stylesheet" href="/forge.css">
+<script src="/i18n.js"></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+<symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-mod" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5zM12 12l9-5M12 12L3 7M12 12v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6zM9 3v15M15 6v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-out" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4M16 17l5-5-5-5M21 12H9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M19 12H5m6-6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="bgfx" aria-hidden="true"><i class="grid"></i><i class="scan"></i><svg class="bg-gear g1" viewBox="-310 -310 620 620" aria-hidden="true"><path d="M272.6,-14.3 L299.9,-8.8 L299.9,8.8 L272.6,14.3 L269.6,42.7 L295.1,53.7 L291.5,70.9 L263.7,70.7 L254.9,97.8 L277.5,113.9 L270.4,130.0 L243.2,123.9 L229.0,148.7 L247.8,169.1 L237.4,183.4 L212.2,171.8 L193.0,193.0 L207.2,217.0 L194.1,228.7 L171.8,212.2 L148.7,229.0 L157.6,255.3 L142.3,264.1 L123.9,243.2 L97.8,254.9 L101.0,282.5 L84.3,287.9 L70.7,263.7 L42.7,269.6 L40.1,297.3 L22.6,299.1 L14.3,272.6 L-14.3,272.6 L-22.6,299.1 L-40.1,297.3 L-42.7,269.6 L-70.7,263.7 L-84.3,287.9 L-101.0,282.5 L-97.8,254.9 L-123.9,243.2 L-142.3,264.1 L-157.6,255.3 L-148.7,229.0 L-171.8,212.2 L-194.1,228.7 L-207.2,217.0 L-193.0,193.0 L-212.2,171.8 L-237.4,183.4 L-247.8,169.1 L-229.0,148.7 L-243.2,123.9 L-270.4,130.0 L-277.5,113.9 L-254.9,97.8 L-263.7,70.7 L-291.5,70.9 L-295.1,53.7 L-269.6,42.7 L-272.6,14.3 L-299.9,8.8 L-299.9,-8.8 L-272.6,-14.3 L-269.6,-42.7 L-295.1,-53.7 L-291.5,-70.9 L-263.7,-70.7 L-254.9,-97.8 L-277.5,-113.9 L-270.4,-130.0 L-243.2,-123.9 L-229.0,-148.7 L-247.8,-169.1 L-237.4,-183.4 L-212.2,-171.8 L-193.0,-193.0 L-207.2,-217.0 L-194.1,-228.7 L-171.8,-212.2 L-148.7,-229.0 L-157.6,-255.3 L-142.3,-264.1 L-123.9,-243.2 L-97.8,-254.9 L-101.0,-282.5 L-84.3,-287.9 L-70.7,-263.7 L-42.7,-269.6 L-40.1,-297.3 L-22.6,-299.1 L-14.3,-272.6 L14.3,-272.6 L22.6,-299.1 L40.1,-297.3 L42.7,-269.6 L70.7,-263.7 L84.3,-287.9 L101.0,-282.5 L97.8,-254.9 L123.9,-243.2 L142.3,-264.1 L157.6,-255.3 L148.7,-229.0 L171.8,-212.2 L194.1,-228.7 L207.2,-217.0 L193.0,-193.0 L212.2,-171.8 L237.4,-183.4 L247.8,-169.1 L229.0,-148.7 L243.2,-123.9 L270.4,-130.0 L277.5,-113.9 L254.9,-97.8 L263.7,-70.7 L291.5,-70.9 L295.1,-53.7 L269.6,-42.7Z M90.0,0.0 A90.0,90.0 0 1,0 -90.0,0.0 A90.0,90.0 0 1,0 90.0,0.0Z" fill-rule="evenodd"/></svg><svg class="bg-gear g2" viewBox="-210 -210 420 420" aria-hidden="true"><path d="M181.1,-17.8 L199.7,-11.0 L199.7,11.0 L181.1,17.8 L174.2,52.8 L188.7,66.3 L180.3,86.6 L160.5,85.8 L140.7,115.5 L149.0,133.4 L133.4,149.0 L115.5,140.7 L85.8,160.5 L86.6,180.3 L66.3,188.7 L52.8,174.2 L17.8,181.1 L11.0,199.7 L-11.0,199.7 L-17.8,181.1 L-52.8,174.2 L-66.3,188.7 L-86.6,180.3 L-85.8,160.5 L-115.5,140.7 L-133.4,149.0 L-149.0,133.4 L-140.7,115.5 L-160.5,85.8 L-180.3,86.6 L-188.7,66.3 L-174.2,52.8 L-181.1,17.8 L-199.7,11.0 L-199.7,-11.0 L-181.1,-17.8 L-174.2,-52.8 L-188.7,-66.3 L-180.3,-86.6 L-160.5,-85.8 L-140.7,-115.5 L-149.0,-133.4 L-133.4,-149.0 L-115.5,-140.7 L-85.8,-160.5 L-86.6,-180.3 L-66.3,-188.7 L-52.8,-174.2 L-17.8,-181.1 L-11.0,-199.7 L11.0,-199.7 L17.8,-181.1 L52.8,-174.2 L66.3,-188.7 L86.6,-180.3 L85.8,-160.5 L115.5,-140.7 L133.4,-149.0 L149.0,-133.4 L140.7,-115.5 L160.5,-85.8 L180.3,-86.6 L188.7,-66.3 L174.2,-52.8Z M60.0,0.0 A60.0,60.0 0 1,0 -60.0,0.0 A60.0,60.0 0 1,0 60.0,0.0Z" fill-rule="evenodd"/></svg></div>
+<div id="sp" aria-hidden="true"></div>
+
+<div id="intro" aria-hidden="true"><div class="in"><img src="/assets/logo-t.png" alt=""><b dir="ltr">FORGEX</b><span class="bar"><i></i></span></div></div>
+
+<aside class="rail" id="rail">
+  <a class="rail-logo" href="#home" aria-label="FORGEX"><img src="/assets/logo-t.png" alt="FORGEX"></a>
+  <nav id="nav" aria-label="الأقسام">
+    <a href="#home" data-v="home"><svg><use href="#i-home"/></svg><span>الرئيسية</span></a>
+    <a href="#plugins" data-v="plugins"><svg><use href="#i-plug"/></svg><span>إضافات</span></a>
+    <a href="#mods" data-v="mods"><svg><use href="#i-mod"/></svg><span>مودات</span></a>
+    <a href="#maps" data-v="maps"><svg><use href="#i-map"/></svg><span>ماب</span></a>
+  </nav>
+  <div class="rail-foot">
+    <button class="rbtn lang" type="button" data-lang-toggle data-no-i18n aria-label="Language"><b class="mono ll">EN</b><span class="lt">English</span></button>
+    <div class="who" id="who" hidden data-no-i18n><i id="wi">F</i><span id="wn"></span></div>
+    <a class="rbtn" id="adm" href="/admin" hidden title="لوحة الإدارة"><svg><use href="#i-gear"/></svg><span>الإدارة</span></a>
+    <button class="rbtn" id="login" type="button" title="تسجيل الدخول"><svg><use href="#i-key"/></svg><span>دخول</span></button>
+    <button class="rbtn" id="logout" type="button" title="تسجيل خروج" hidden><svg><use href="#i-out"/></svg><span>خروج</span></button>
+  </div>
+</aside>
+
+<header class="mbar"><a class="mlogo" href="#home"><img src="/assets/logo-t.png" alt=""><b dir="ltr">FORGEX</b></a>
+  <button class="lang-m mono" type="button" data-lang-toggle data-no-i18n aria-label="Language"><span class="ll">EN</span></button>
+  <button class="burger" id="mb" type="button" aria-label="القائمة" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button></header>
+<div id="menu" class="menu" aria-hidden="true"><nav id="mnav">
+  <a href="#home"><small>00</small>الرئيسية</a><a href="#plugins"><small>01</small>الإضافات</a><a href="#mods"><small>02</small>المودات</a><a href="#maps"><small>03</small>الماب</a>
+  <a href="/admin" id="madm" hidden><small>//</small>لوحة الإدارة</a>
+  <button type="button" id="mlogin"><small>//</small><span id="mlt">تسجيل الدخول</span></button>
+  <button type="button" data-lang-toggle data-no-i18n><small>//</small><span class="lt">English</span></button><p class="mwho mono" id="mwho" hidden data-no-i18n></p></nav></div>
+
+<main id="main">
+  <section class="view" id="v-home">
+    <div class="hero">
+      <div class="machine-wrap"><svg class="machine" viewBox="-230 -230 760 460" aria-hidden="true">
+  <g class="gA"><path d="M181.6,-11.9 L199.9,-7.3 L199.9,7.3 L181.6,11.9 L178.5,35.5 L195.0,44.7 L191.2,58.8 L172.3,58.5 L163.2,80.5 L176.8,93.6 L169.4,106.3 L151.3,101.1 L136.8,120.0 L146.5,136.1 L136.1,146.5 L120.0,136.8 L101.1,151.3 L106.3,169.4 L93.6,176.8 L80.5,163.2 L58.5,172.3 L58.8,191.2 L44.7,195.0 L35.5,178.5 L11.9,181.6 L7.3,199.9 L-7.3,199.9 L-11.9,181.6 L-35.5,178.5 L-44.7,195.0 L-58.8,191.2 L-58.5,172.3 L-80.5,163.2 L-93.6,176.8 L-106.3,169.4 L-101.1,151.3 L-120.0,136.8 L-136.1,146.5 L-146.5,136.1 L-136.8,120.0 L-151.3,101.1 L-169.4,106.3 L-176.8,93.6 L-163.2,80.5 L-172.3,58.5 L-191.2,58.8 L-195.0,44.7 L-178.5,35.5 L-181.6,11.9 L-199.9,7.3 L-199.9,-7.3 L-181.6,-11.9 L-178.5,-35.5 L-195.0,-44.7 L-191.2,-58.8 L-172.3,-58.5 L-163.2,-80.5 L-176.8,-93.6 L-169.4,-106.3 L-151.3,-101.1 L-136.8,-120.0 L-146.5,-136.1 L-136.1,-146.5 L-120.0,-136.8 L-101.1,-151.3 L-106.3,-169.4 L-93.6,-176.8 L-80.5,-163.2 L-58.5,-172.3 L-58.8,-191.2 L-44.7,-195.0 L-35.5,-178.5 L-11.9,-181.6 L-7.3,-199.9 L7.3,-199.9 L11.9,-181.6 L35.5,-178.5 L44.7,-195.0 L58.8,-191.2 L58.5,-172.3 L80.5,-163.2 L93.6,-176.8 L106.3,-169.4 L101.1,-151.3 L120.0,-136.8 L136.1,-146.5 L146.5,-136.1 L136.8,-120.0 L151.3,-101.1 L169.4,-106.3 L176.8,-93.6 L163.2,-80.5 L172.3,-58.5 L191.2,-58.8 L195.0,-44.7 L178.5,-35.5Z M60.0,0.0 A60,60 0 1,0 -60.0,0.0 A60,60 0 1,0 60.0,0.0Z" fill-rule="evenodd"/><circle r="150" class="ring"/><circle r="110" class="ring dash"/><circle r="12" class="hub"/></g>
+  <g class="gB" transform="translate(284,0)"><g class="gBi"><path d="M81.3,-10.7 L99.7,-7.3 L99.7,7.3 L81.3,10.7 L75.8,31.4 L90.0,43.5 L82.7,56.2 L65.1,49.9 L49.9,65.1 L56.2,82.7 L43.5,90.0 L31.4,75.8 L10.7,81.3 L7.3,99.7 L-7.3,99.7 L-10.7,81.3 L-31.4,75.8 L-43.5,90.0 L-56.2,82.7 L-49.9,65.1 L-65.1,49.9 L-82.7,56.2 L-90.0,43.5 L-75.8,31.4 L-81.3,10.7 L-99.7,7.3 L-99.7,-7.3 L-81.3,-10.7 L-75.8,-31.4 L-90.0,-43.5 L-82.7,-56.2 L-65.1,-49.9 L-49.9,-65.1 L-56.2,-82.7 L-43.5,-90.0 L-31.4,-75.8 L-10.7,-81.3 L-7.3,-99.7 L7.3,-99.7 L10.7,-81.3 L31.4,-75.8 L43.5,-90.0 L56.2,-82.7 L49.9,-65.1 L65.1,-49.9 L82.7,-56.2 L90.0,-43.5 L75.8,-31.4Z M26.0,0.0 A26,26 0 1,0 -26.0,0.0 A26,26 0 1,0 26.0,0.0Z" fill-rule="evenodd"/><circle r="62" class="ring"/><circle r="8" class="hub p"/></g></g>
+</svg></div>
+      <div class="hero-in">
+        <p class="eyebrow mono" dir="ltr"><i></i> WORKSHOP / PLUGINS / MODS / MAPS</p>
+        <h1 class="wm steel" dir="ltr" aria-label="FORGEX">FORGEX</h1>
+        <p class="lead">ورشة هندسية لتجميع الإضافات والمودات والخرائط لسيرفرات ماينكرافت. حمّل مباشرة وشغّل بدون تعقيد.</p>
+        <div class="cta"><a class="btn pri" href="#plugins"><span>تصفّح الإضافات</span></a><a class="btn" href="#mods"><span>المودات</span></a><a class="btn" href="#maps"><span>الماب</span></a></div>
+      </div>
+      <dl class="readout mono" dir="ltr" aria-label="إحصائيات">
+        <div><dt>PLUGINS</dt><dd data-s="plugin">00</dd></div><div><dt>MODS</dt><dd data-s="mod">00</dd></div><div><dt>MAPS</dt><dd data-s="map">00</dd></div>
+      </dl>
+    </div>
+
+    <section class="sec">
+      <div class="sh rv"><span class="mono" dir="ltr">// MODULES</span><h2>الأقسام</h2></div>
+      <div class="mods-list">
+        <a class="mrow rv" href="#plugins"><b class="num mono">01</b><div><h3 dir="ltr">PLUGINS</h3><p>إضافات جاهزة للتشغيل على سيرفرك.</p></div><span class="cnt mono" data-s="plugin">0</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="mrow rv" href="#mods"><b class="num mono">02</b><div><h3 dir="ltr">MODS</h3><p>مودات تضيف محتوى وميزات جديدة للعبة.</p></div><span class="cnt mono" data-s="mod">0</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="mrow rv" href="#maps"><b class="num mono">03</b><div><h3 dir="ltr">MAPS</h3><p>خرائط مصنوعة بدقة وجاهزة للعب.</p></div><span class="cnt mono" data-s="map">0</span><svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="sec"><div class="sh rv"><span class="mono" dir="ltr">// FEATURED</span><h2>إضافة الأسبوع</h2></div><div class="feat plate brk rv" id="wk"></div></section>
+
+    <section class="sec">
+      <div class="sh rv"><span class="mono" dir="ltr">// PROCESS</span><h2>كيف تبدأ</h2></div>
+      <ol class="proc">
+        <li class="rv"><b class="mono">01</b><h3>اختر</h3><p>تصفّح القسم وابحث عمّا تحتاجه.</p></li>
+        <li class="rv"><b class="mono">02</b><h3>حمّل</h3><p>تحميل مباشر بضغطة واحدة.</p></li>
+        <li class="rv"><b class="mono">03</b><h3>شغّل</h3><p>ضعه بسيرفرك وابدأ التجربة.</p></li>
+      </ol>
+    </section>
+
+    <section class="band rv"><div class="hazard" aria-hidden="true"></div><div class="band-in"><h2>جاهز تبدأ التصنيع؟</h2><p>ابدأ باستكشاف الأقسام أو انضم لمجتمعنا.</p>
+      <div class="cta"><a class="btn pri" href="#plugins"><span>ابدأ الآن</span></a><a class="btn" href="https://discord.gg/cpPHVaSFKG" target="_blank" rel="noopener noreferrer"><span>Discord</span></a></div></div><div class="hazard" aria-hidden="true"></div></section>
+  </section>
+
+  <section class="view" id="v-plugins"><header class="ph"><span class="idx mono" dir="ltr">01 / PLUGINS</span><h2>الإضافات</h2><p>إضافات جاهزة للتشغيل على سيرفرك.</p></header>
+    <div class="tools plate"><label class="search"><svg><use href="#i-search"/></svg><input data-q="plugin" placeholder="ابحث عن إضافة..." maxlength="60" aria-label="بحث"></label><div class="chips" data-c="plugin"></div></div><div class="list" data-l="plugin"></div></section>
+  <section class="view" id="v-mods"><header class="ph"><span class="idx mono" dir="ltr">02 / MODS</span><h2>المودات</h2><p>مودات تضيف محتوى وميزات جديدة.</p></header>
+    <div class="tools plate"><label class="search"><svg><use href="#i-search"/></svg><input data-q="mod" placeholder="ابحث عن مود..." maxlength="60" aria-label="بحث"></label><div class="chips" data-c="mod"></div></div><div class="list" data-l="mod"></div></section>
+  <section class="view" id="v-maps"><header class="ph"><span class="idx mono" dir="ltr">03 / MAPS</span><h2>الماب</h2><p>خرائط جاهزة للتحميل واللعب.</p></header>
+    <div class="tools plate"><label class="search"><svg><use href="#i-search"/></svg><input data-q="map" placeholder="ابحث عن ماب..." maxlength="60" aria-label="بحث"></label><div class="chips" data-c="map"></div></div><div class="list" data-l="map"></div></section>
+
+  <footer class="foot mono" dir="ltr"><span>FORGEX</span><span>© 2026</span></footer>
+</main>
+
+<div id="drawer" aria-hidden="true"><div class="back" id="dback"></div>
+  <aside class="sheet plate brk" role="dialog" aria-modal="true" aria-labelledby="dt">
+    <button class="x" id="dx" type="button" aria-label="إغلاق">×</button><div class="dimg" id="dimg" hidden><img id="di" alt=""></div>
+    <div class="dbody"><span class="tag" id="dc" hidden></span><h2 id="dt"></h2><p id="dd"></p><div class="meta mono" id="dm"></div>
+      <div class="row"><a class="btn pri" id="ddl" hidden><svg><use href="#i-dl"/></svg><span>تحميل</span></a><a class="btn" id="dl2" hidden target="_blank" rel="noopener noreferrer"><svg><use href="#i-link"/></svg><span>رابط خارجي</span></a></div></div></aside></div>
+
+<div id="auth" aria-hidden="true"><div class="back" id="aback"></div>
+  <form class="acard plate brk" id="aform" novalidate aria-labelledby="at">
+    <button class="x" id="ax" type="button" aria-label="إغلاق">×</button><div class="scanline" aria-hidden="true"></div>
+    <img src="/assets/logo-t.png" alt="" class="alogo"><h2 id="at">تسجيل الدخول</h2><p class="sub" id="asubt">ادخل بحسابك أو أنشئ حساب عضو جديد.</p>
+    <div class="seg" role="tablist"><button type="button" class="on" data-m="login" role="tab">دخول</button><button type="button" data-m="reg" role="tab">حساب جديد</button></div>
+    <label class="nm" id="anw" hidden>الاسم (اختياري)<input id="an" maxlength="40" autocomplete="nickname"></label>
+    <label>الإيميل<input id="ae" type="email" autocomplete="username" maxlength="120" dir="ltr" required></label>
+    <label>كلمة المرور<span class="pw"><input id="ap" type="password" autocomplete="current-password" maxlength="128" dir="ltr" required><button type="button" id="aeye" aria-label="إظهار كلمة المرور"><svg><use href="#i-eye"/></svg></button></span></label>
+    <small class="hint" id="ahint" hidden>8 أحرف على الأقل</small>
+    <div class="err" id="aerr" role="alert"></div>
+    <button class="btn pri wide" id="asub" type="submit"><span id="asl">دخول</span><i class="spin" aria-hidden="true"></i></button>
+    <div class="ok" aria-hidden="true"><svg><use href="#i-check"/></svg><b>تم التحقق</b></div>
+  </form></div>
+<div id="toast" role="status"></div>
+<script src="/forge.js"></script>
+</body>
+</html>
