@@ -3,8 +3,18 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "forgex",
   "main": "worker.js",
-  "compatibility_date": "2025-09-01",
-  "assets": {
+  "compatibility_date": "2025-09-01", 
+
+"assets": {
+  "directory": "./public",
+  "binding": "ASSETS",
+  "run_worker_first": [
+    "/api/*",
+    "/dl/*",
+    "/media/*"
+  ]
+}
+
 "directory": ".",
     "binding": "ASSETS",
     "run_worker_first": [
